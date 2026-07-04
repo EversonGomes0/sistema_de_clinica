@@ -20,7 +20,7 @@ public class ConsultaEntity {
     @JoinColumn(name = "paciente_id")
     private PacienteEntity paciente;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "doutor_id")
     private DoutorEntity doutor;
 
