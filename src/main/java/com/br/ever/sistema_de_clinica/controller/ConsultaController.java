@@ -25,4 +25,10 @@ public class ConsultaController {
     public void agendarConsulta(@Validated @RequestBody ConsultaDto consultaDto) throws BadRequestException {
         consultaService.agendarConsulta(consultaDto);
     }
+
+    @PatchMapping("/{id}/confirmar")
+    @ResponseStatus(HttpStatus.OK)
+    public void confirmarConsulta(@Validated @RequestBody ConsultaDto consultaDto) {
+        consultaService.confirmarConsulta(consultaDto.getPaciente_id());
+    }
 }
