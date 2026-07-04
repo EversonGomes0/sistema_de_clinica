@@ -31,4 +31,10 @@ public class ConsultaController {
     public void confirmarConsulta(@Validated @RequestBody ConsultaDto consultaDto) {
         consultaService.confirmarConsulta(consultaDto.getPaciente_id());
     }
+
+    @PatchMapping("/{id}/finalizar")
+    @ResponseStatus(HttpStatus.OK)
+    public void finalizarConsulta(@Validated @RequestBody ConsultaDto consultaDto) {
+        consultaService.finalizarConsulta(consultaDto.getPaciente_id());
+    }
 }
