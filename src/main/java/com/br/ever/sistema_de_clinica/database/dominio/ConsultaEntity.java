@@ -16,7 +16,7 @@ public class ConsultaEntity {
     @Column(nullable = false)
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "paciente_id")
     private PacienteEntity paciente;
 
