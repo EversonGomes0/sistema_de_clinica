@@ -31,4 +31,16 @@ public class ConsultaService {
                 .paciente(pacienteEntity)
                 .status(StatusConsulta.AGENDADA).build());
     }
+    public void finalizarConsulta(Long  id) {
+        var consulta = consultaRepository.findById(Math.toIntExact(id)).orElseThrow(() -> new RuntimeException());
+        consulta.finalizada();
+
+        consultaRepository.save(consulta);
+    }
+    public void confirmarConsulta(Long  id) {
+        var consulta = consultaRepository.findById(Math.toIntExact(id)).orElseThrow(() -> new RuntimeException());
+        consulta.confirmar();
+
+        consultaRepository.save(consulta);
+    }
 }
