@@ -28,6 +28,16 @@ public class ConsultaEntity {
     @Column(nullable = false)
     private StatusConsulta status;
 
+    public void  confirmar() {
+        this.status = StatusConsulta.CONFIRMADA;
+    }
+    public void  cancelar() {
+        this.status = StatusConsulta.CANCELADA;
+    }
+    public void  finalizada() {
+        this.status = StatusConsulta.FINALIZADA;
+    }
+
 
 
 }
