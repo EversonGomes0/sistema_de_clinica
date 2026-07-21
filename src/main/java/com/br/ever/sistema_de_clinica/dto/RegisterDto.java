@@ -10,12 +10,12 @@ import org.springframework.validation.annotation.Validated;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class DoutorDto {
+public class RegisterDto {
 
     @NotBlank
     private String nome;
     @NotBlank
     private String cpf;
     @NotBlank
-    private String especialidade;
+    private String senha;
 }

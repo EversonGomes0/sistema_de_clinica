@@ -1,5 +1,19 @@
 package com.br.ever.sistema_de_clinica.service;
 
+import com.br.ever.sistema_de_clinica.config.SecurityConfiguration;
+import com.br.ever.sistema_de_clinica.database.dominio.DoutorEntity;
+import com.br.ever.sistema_de_clinica.database.dominio.PacienteEntity;
+import com.br.ever.sistema_de_clinica.database.dominio.RolesEntity;
+import com.br.ever.sistema_de_clinica.dto.RegisterDto;
+import com.br.ever.sistema_de_clinica.enums.RolesType;
+import com.br.ever.sistema_de_clinica.repository.IDoutorRepository;
+import com.br.ever.sistema_de_clinica.repository.IPacienteRepository;
+import com.br.ever.sistema_de_clinica.repository.IRolesRepository;
+import org.springframework.stereotype.Service;
+
+import java.util.Set;
+
+@Service
 public class AuthenticationService {
 
     private IPacienteRepository pacienteRepository;

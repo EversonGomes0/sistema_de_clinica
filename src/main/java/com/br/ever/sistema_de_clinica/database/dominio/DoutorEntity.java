@@ -2,9 +2,11 @@ package com.br.ever.sistema_de_clinica.database.dominio;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.jspecify.annotations.Nullable;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Table(name = "doutores")
 @Entity
@@ -13,7 +15,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class DoutorEntity {
+public class DoutorEntity implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,6 +31,34 @@ public class DoutorEntity {
     @Column(nullable = false)
     private String especialidade;
 
+    @Column(nullable = false)
+    private String senha;
+
     @OneToMany(mappedBy = "doutor")
     private List<ConsultaEntity> consultas = new ArrayList<>();
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "doutor_roles",
+            joinColumns = @JoinColumn(name = "doutor_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
+    private Set<RolesEntity> roles = new HashSet<>();
+
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return roles;
+    }
+
+    @Override
+    public @Nullable String getPassword() {
+        return senha;
+    }
+
+
+    @Override
+    public String getUsername() {
+        return nome;
+    }
 }
